@@ -16,11 +16,7 @@ class Pesquisa extends Component {
         </div>
         {/* Caso a pesquisa não tenha sido feita ainda. */}
         <div id="blank" className={this.props.pesquisa === "" ? "" : "hidden"}>
-          <Image
-            className="nadaFazer"
-            source={require(this.imagem)}
-            alt="empty folder"
-          />
+          <img className="nadaFazer" src={this.imagem} alt="empty folder" />
           <p>Nada a foi pesquisado ainda.</p>
         </div>
       </div>

@@ -37,7 +37,7 @@ class Tarefa extends Component {
                 this.seSwitchIgualaView() ? "" : "hidden"
               }`}
             >
-              <Image source={require(this.iAltera)} alt="alterar" />
+              <img src={this.iAltera} alt="alterar" />
             </button>
             <button
               onClick={this.apaga}
@@ -45,7 +45,7 @@ class Tarefa extends Component {
                 this.seSwitchIgualaView() ? "" : "hidden"
               }`}
             >
-              <Image source={require(this.iApaga)} alt="apagar" />
+              <img src={this.iApaga} alt="apagar" />
             </button>
           </span>
         </li>
