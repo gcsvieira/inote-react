@@ -4,9 +4,10 @@ import "./Calendario.css";
 class Calendario extends Component {
   render() {
     return (
+      // Criação do calendário em HTML
       <div className="component">
-        <div className="calendar secondary">
-          <div className="month prussian">
+        <div className="calendar">
+          <div className="month">
             <p className="arrow">🡐</p>
             <div className="date">
               <h1>Março</h1>
@@ -15,7 +16,7 @@ class Calendario extends Component {
             <p className="arrow">🡒</p>
           </div>
 
-          <div className="weekdays prussian">
+          <div className="weekdays">
             <div>Dom</div>
             <div>Seg</div>
             <div>Ter</div>
@@ -56,7 +57,7 @@ class Calendario extends Component {
             <div>25</div>
             <div>26</div>
             <div>27</div>
-            <div className="today primary">28</div>
+            <div className="today">28</div>
             <div>29</div>
             <div>30</div>
             <div>31</div>

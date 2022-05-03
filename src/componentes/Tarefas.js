@@ -4,11 +4,6 @@ import "./Tarefas.css";
 
 class Tarefas extends Component {
   state = {
-    tarefas: [
-      "Levar carro para oficina",
-      "Consultar boleto do cartão",
-      "Fazer compras",
-    ],
     novaTarefa: "",
   };
   imagem = "/assets/empty-folder.png";
@@ -16,80 +11,123 @@ class Tarefas extends Component {
   render() {
     return (
       <div className="component">
-        <div className="componentHeader">
-          <h1 className="componentTitle">Visualizar Tarefas</h1>
+        {/* Verifica se está na tela de add tarefas. */}
+        <div className={this.seSwitchIgualaAdd() ? "hidden" : ""}>
+          <div className="componentHeader ">
+            <h1 className="componentTitle">28 de Março de 2022</h1>
+          </div>
         </div>
         <div className="componentContentTarefas">
-          <div className={this.listaVazia() ? "hidden" : ""}>
+          <div
+            className={`${this.listaVazia() ? "hidden" : ""} ${
+              this.seSwitchIgualaAdd() ? "hidden" : ""
+            }`}
+          >
+            {/* Exibe a lista de tarefas. */}
             {this.listaDeTarefas()}
           </div>
+          {/* Exibe uma tela caso não haja nenhuma tarefa adicionada. */}
           <div id="blank" className={this.listaVazia() ? "" : "hidden"}>
             <img className="nadaFazer" src={this.imagem} alt="empty folder" />
             <p>Nada a fazer neste dia.</p>
           </div>
-          <div className="field mt2">
-            <input
-              value={this.state.novaTarefa}
-              onChange={this.trataNovaTarefa}
-              onKeyPress={this.teclaEnter}
-              type="text"
-              autoComplete="off"
-            />
-            <button onClick={this.adicionaTarefa} className="button primary">
-              <img src="./assets/plus1.png" alt="adicionar" />
-            </button>
-          </div>
-          <div className="mt2">
-            <button onClick={() => console.log(this.state.tarefas)}>
-              Estado
-            </button>
+          {/* Tela de adicionar tarefa. */}
+          <div className={this.seSwitchIgualaAdd() ? "" : "hidden"}>
+            <div className="component">
+              <label>
+                <h1>Título</h1>
+              </label>
+              <div className="field mt2">
+                <input
+                  value={this.state.novaTarefa}
+                  onChange={this.trataNovaTarefa}
+                  onKeyPress={this.teclaEnter}
+                  type="text"
+                  autoComplete="off"
+                />
+              </div>
+            </div>
+            <div className="buttonGroup mt2 end">
+              <button
+                type="submit"
+                className="button quarter secondary mt2"
+                onClick={this.visualizaHome}
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                className="button quarter primary mt2"
+                onClick={this.addTaskEvent}
+              >
+                Adicionar
+              </button>
+            </div>
           </div>
         </div>
       </div>
     );
   }
 
+  // Verifica se lista esta vazia.
   listaVazia() {
-    return this.state.tarefas.length === 0;
+    return this.props.tarefas.length === 0;
   }
 
+  // Método lista de tarefas.
   listaDeTarefas() {
     return (
       !this.listaVazia() && (
-        <ul className={` list ${this.listaVazia() ? "hidden" : ""}`}>
-          {this.state.tarefas.map((t, i) => (
-            <Tarefa key={i} descricao={t} onAltera={this.alteraTarefa} />
+        <ul className={`list ${this.listaVazia() ? "hidden" : ""}`}>
+          {this.props.tarefas.map((t) => (
+            <Tarefa
+              key={t}
+              descricao={t}
+              onAltera={this.props.onAltera}
+              onApaga={this.props.onApaga}
+              switchWindow={this.props.switchWindow}
+            />
           ))}
         </ul>
       )
     );
   }
 
-  adicionaTarefa = () => {
-    const novoVetorTarefas = [...this.state.tarefas, this.state.novaTarefa];
-    this.setState({
-      tarefas: novoVetorTarefas,
-      novaTarefa: "",
-    });
-  };
-
+  // Confirmação por meio da tecla enter.
   teclaEnter = (e) => {
-    if (e.key === "Enter") this.adicionaTarefa();
+    if (e.key === "Enter") this.addTaskEvent();
   };
 
+  // Trata nova tarefa da lista.
   trataNovaTarefa = (evento) => {
     this.setState({
       novaTarefa: evento.target.value,
     });
   };
 
-  alteraTarefa = (t, d) => {
-    const i = this.state.tarefas.indexOf(t);
-    const novaLista = [...this.state.tarefas];
-    novaLista[i] = d;
+  // Adiciona nova tarefa a lista.
+  adiciona = () => {
+    if (this.state.novaTarefa === "") return;
+    this.props.onAdiciona(this.state.novaTarefa);
     this.setState({
-      tarefas: novaLista,
+      novaTarefa: "",
     });
+  };
+
+  // Verifica se está na tela de add tarefa.
+  seSwitchIgualaAdd = () => {
+    if (this.props.switchWindow === "add") return true;
+  };
+
+  // Alterna para a página inicial.
+  visualizaHome = () => {
+    this.props.onVisualiza("home");
+  };
+
+  // Agrupa dois métodos em um para ser colocado em parâmetro onClick.
+  addTaskEvent = () => {
+    this.adiciona();
+    this.visualizaHome();
   };
 }
 

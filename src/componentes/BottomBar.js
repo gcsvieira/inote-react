@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 
 class BottomBar extends Component {
+  state = {};
+
   render() {
     return (
+      // Botões da barra inferior
       <div>
         <div className="bottomButtons">
           <div className="buttonGroup mt2">
             <button
               type="submit"
-              id="delete-task"
               className="button secondary mt1"
-              onClick=""
+              onClick={this.visualizaView}
             >
-              Deletar Tarefa
+              Visualizar Tarefas
             </button>
             <button
               type="submit"
-              id="add-task "
               className="button primary mt1"
-              onClick=""
+              onClick={this.visualizaAdd}
             >
               Adicionar Tarefa
             </button>
@@ -27,6 +28,17 @@ class BottomBar extends Component {
       </div>
     );
   }
+
+  // Alterna para a tela de visualizar tarefas.
+  visualizaView = () => {
+    this.props.onVisualiza("view");
+  };
+
+  // Alterna para a tela de adicionar tarefas.
+  visualizaAdd = () => {
+    let view = "add";
+    this.props.onVisualiza(view);
+  };
 }
 
 export default BottomBar;

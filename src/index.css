@@ -36,6 +36,7 @@ p {
 }
 
 .headerBar {
+  background: #283a53;
   position: fixed;
   top: 0;
   left: 0;
@@ -53,14 +54,12 @@ p {
   margin-left: 1rem;
 }
 
-.badge {
-  border: thin solid black;
-  border-radius: 0.75rem;
-  min-width: 1.25rem;
-  text-align: center;
-  background-color: #fff;
-  color: #000;
-  margin-right: 1rem;
+.headerBar.nextToArrow {
+  justify-content: left;
+}
+
+.component {
+  padding: 1rem;
 }
 
 .componentHeader {
@@ -75,7 +74,6 @@ p {
 }
 
 .componentTitle {
-  margin-left: 1rem;
   flex: 1;
   color: #283a53;
 }
@@ -147,6 +145,22 @@ p {
   width: 1rem;
   vertical-align: middle;
   padding: 0.25rem;
+}
+
+.mdIcons * {
+  padding: 0.25rem;
+  border-radius: 1.8rem;
+  height: unset;
+  min-width: unset;
+  line-height: 1rem;
+}
+
+.button.mdIcons {
+  padding: 0.25rem;
+  border-radius: 1.8rem;
+  height: unset;
+  min-width: unset;
+  line-height: 1rem;
 }
 
 .buttonGroup {
@@ -224,6 +238,21 @@ p {
   border-radius: 0.35rem;
 }
 
+.fieldText {
+  flex: 1;
+  height: 2rem;
+  padding: 0.3rem 0.7rem;
+  color: #000;
+  background: #fff;
+  border: thin solid #dce5e8;
+  border-radius: 0.35rem;
+  margin-right: 2rem;
+}
+
+input.fieldText {
+  width: 90%;
+}
+
 .field input.valid {
   border: thin solid #2a9d8f;
 }
@@ -234,6 +263,8 @@ p {
 .list {
   width: 100%;
   list-style: none;
+  color: #000;
+  background: #eee2df;
 }
 
 .list li {
@@ -244,6 +275,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-color: #ddd1ce;
 }
 
 .list li.active {
@@ -276,7 +308,7 @@ p {
   background: #a52422;
   border: thin solid #941311;
 }
-button.primary:active {
+.primary:active {
   background: #830200;
   border: thin solid #720100;
 }
@@ -291,7 +323,7 @@ button.primary:active {
   background: #283a53;
   border: thin solid #172942;
 }
-button.prussian:active {
+.prussian:active {
   background: #061831;
   border: thin solid #050720;
 }
@@ -300,7 +332,7 @@ button.prussian:active {
   background: #eee2df;
   border: thin solid #ddd1ce;
 }
-button.secondary:active {
+.secondary:active {
   background: #ccc0bd;
   border: thin solid #bbb0ac;
 }
@@ -309,7 +341,7 @@ button.secondary:active {
   background: #2a9d8f;
   border: thin solid #198c7e;
 }
-button.success:active {
+.success:active {
   background: #087b6d;
   border: thin solid #006a5c;
 }
@@ -318,7 +350,7 @@ button.success:active {
   background: #ffd166;
   border: thin solid #eec055;
 }
-button.warning:active {
+.warning:active {
   background: #ddb044;
   border: thin solid #cca033;
 }
@@ -327,7 +359,7 @@ button.warning:active {
   background: #ef233c;
   border: thin solid #de122b;
 }
-button.danger:active {
+.danger:active {
   background: #cd011a;
   border: thin solid #bc0009;
 }
@@ -336,7 +368,7 @@ button.danger:active {
   background: #edf6f9;
   border: thin solid #dce5e8;
 }
-button.light:active {
+.light:active {
   background: #cbd4d7;
   border: thin solid #bac3c6;
 }
@@ -345,7 +377,7 @@ button.light:active {
   background: #576066;
   border: thin solid #465055;
 }
-button.coral-color:active {
+.coral-color:active {
   background: #354044;
   border: thin solid #243033;
 }
@@ -354,7 +386,7 @@ button.coral-color:active {
   background: #08090a;
   border: thin solid #070809;
 }
-button.dark:active {
+.dark:active {
   background: #060708;
   border: thin solid #050607;
 }
@@ -371,4 +403,22 @@ button.dark:active {
 }
 .mt4 {
   margin-top: 4rem;
+}
+.mt8 {
+  margin-top: 8rem;
+}
+.mr0-6 {
+  margin-right: 0.6rem;
+}
+.ml0-6 {
+  margin-left: 0.6rem;
+}
+.mr1 {
+  margin-right: 1rem;
+}
+.ml2 {
+  margin-left: 2rem;
+}
+.ml1 {
+  margin-left: 1rem;
 }
